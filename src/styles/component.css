@@ -1,0 +1,59 @@
+
+/* component styles */
+
+/* btn styles */
+
+.btn-style-one{
+  color: #000;
+font-size: 16px;
+font-weight: 500;
+line-height: normal;
+border-radius: 10px;
+border: 1px solid #20B15A;
+padding: 10px 25px;
+text-decoration: none;
+display:inline-block;
+transition: all 0.3s ease-in-out;
+}
+.btn-style-one:hover{
+  background-color: #20B15A;
+  color: #FFF;
+}
+.btn-style-one.reverse{
+  background-color: #20B15A;
+  color: #FFF;
+}
+
+.btn-style-one.reverse:hover{
+  border: 1px solid #20B15A;
+   color: #000;
+   background-color: transparent;
+}
+/* navbar comp */
+
+.navbar .menu-item a{
+      color: var(--text-black);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration: none;
+      margin-right: 50px;
+        transition: all 0.3s ease-in-out;
+     position: relative;
+}
+
+/* .navbar .menu-item a::after{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  background: var(--color-hover);
+  height:2px;
+} */
+.navbar .menu-item a.active,
+.navbar .menu-item a:hover{
+  color: var(--color-hover)
+}
+.navbar .button-wrapper .btn-style-one.reverse{
+margin-left:30px;
+}
