@@ -7,13 +7,16 @@ const AllProjects = async () => {
   const loadProjects = async () => {
     return projects?.map((project, ind) => {
       return (
-        <div key={ind} className="project-card w-[605px] mb-[30px] pb-[30px] pt-[40px] px-[30px]">
-            <Link target="_blank" href={`${project.live}`}>
+        <div
+          key={ind}
+          className="project-card w-[605px] mb-[30px] pb-[30px] pt-[40px] px-[30px]"
+        >
+          <Link target="_blank" href={`${project.live}`}>
             <div
-                style={{ backgroundImage: `url(${project["image"]})` }}
-                className="img-1 w-full h-[470px] rounded-[10px] bg-[#000]"
-              ></div>
-              </Link>
+              style={{ backgroundImage: `url(${project["image"]})` }}
+              className="img-1 w-full h-[470px] rounded-[10px] bg-[#000]"
+            ></div>
+          </Link>
           <h2 className="text-[26px] font-semibold uppercase mt-[30px]">
             {project.title}
           </h2>
@@ -21,7 +24,6 @@ const AllProjects = async () => {
       );
     });
   };
-
 
   return (
     <div className="team-member pt-[65px] pb-[85px]">

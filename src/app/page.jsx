@@ -3,23 +3,17 @@ import FeaturedProjects from "@/components/featuredProjects";
 import WorkList from "@/components/workList";
 import getSimpleResponse from "@/utils/getSimpleResponse";
 
-// export const metadata = {
-//   title: '...',
-//   description: '...',
-// }
 
 export async function generateMetadata() {
-  const meta = await getSimpleResponse("/api/SiteMeta/home");
+  const metadata = await getSimpleResponse("/api/SiteMeta/home");
 
-  if (!meta) {
-    throw new Error("Error fetching site metadata");
-  }
+  const { title, description, image, keywords } = await metadata[0];
 
-  const { title, description, image, keywords } = meta;
   return {
     title,
     description,
     keywords,
+    metadataBase: new URL('https://acme.com'),
     openGraph: {
       images: [image],
     },

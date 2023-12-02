@@ -1,15 +1,20 @@
 import Link from "next/link";
-import getSimpleResponse from '@/utils/getSimpleResponse';
+import getSimpleResponse from "@/utils/getSimpleResponse";
 
 const FeaturedProjects = async () => {
-      const projects = await getSimpleResponse("/api/FeaturedProject");
+  const projects = await getSimpleResponse("/api/FeaturedProject");
 
   const loadFeaturedProjects = () => {
     if (projects.length <= 1) {
       return null;
     }
     return projects.slice(1, 5).map((project, index) => (
-      <div key={index} className={`col-span-3 row-span-3 ${index % 2 === 0 ? 'col-start-7' : 'col-start-10'} ${index >= 2 ? 'row-start-4' : ''}`}>
+      <div
+        key={index}
+        className={`col-span-3 row-span-3 ${
+          index % 2 === 0 ? "col-start-7" : "col-start-10"
+        } ${index >= 2 ? "row-start-4" : ""}`}
+      >
         <div className="single-project">
           <Link target="_blank" href={`${project.live}`}>
             <div
@@ -27,7 +32,7 @@ const FeaturedProjects = async () => {
   return (
     <div className="featured_projects pt-[61px] pb-[84px] bg-[#F0FDF4]">
       <div className="container">
-       <div className="section-top">
+        <div className="section-top">
           <h3 className="section-subtitle">Featured Project</h3>
           <h2 className="section-title capitalize w-[490px] mt-[25px] mb-[72px]">
             We provide the Perfect Solution to your business growth

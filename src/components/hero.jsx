@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 import getSimpleResponse from "@/utils/getSimpleResponse";
 
 export default async function Hero() {
   const brands = await getSimpleResponse("/api/BrandList");
   const contents = await getSimpleResponse("/api/HeroList");
-  const {title , description} = contents || {};
-  
+  const { title, description } = contents || {};
+
   return (
     <div className="hero bg-[#50d71e] pt-[170px] pb-[35px]">
       <div className="container">
@@ -15,8 +15,9 @@ export default async function Hero() {
             <h1 className="hero-title">
               {title || `Increase Your Customers Loyalty and Satisfaction`}
             </h1>
-            <p className="hero-subtitle mt-[10px]">
-              {description || `We help businesses like yours earn more customers, standout from
+            <p className="hero-subtitle mt-[10px] font-avenir font-semibold leading-[150%]">
+              {description ||
+                `We help businesses like yours earn more customers, standout from
               competitors, make more money`}
             </p>
             <Link
@@ -63,7 +64,7 @@ export default async function Hero() {
                     height={100}
                     // layout="responsive"
                     alt="brands"
-                    className='h-auto w-auto'
+                    className="h-auto w-auto"
                   />
                 </li>
               );

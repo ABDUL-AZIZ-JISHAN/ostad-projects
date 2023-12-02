@@ -13,13 +13,6 @@ const Navbar = () => {
   const [prevScrollpos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  // const handleScroll = () => {
-  //   const currentScrollPos = window.scrollY;
-  //   setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 10);
-  //   setPrevScrollPos(currentScrollPos);
-  // };
-
-  // let prevScrollpos = window.scrollY;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +41,13 @@ const Navbar = () => {
       <nav className="navbar flex justify-between items-center">
         <div className="brand">
           <Link href="/">
-            <Image src="/img/logo.svg" className="h-[30px] w-[155px]" width={100} height={100} alt="img" />
+            <Image
+              src="/img/logo.svg"
+              className="h-[30px] w-[155px]"
+              width={100}
+              height={100}
+              alt="img"
+            />
           </Link>
         </div>
         <div className="menu-wrapper flex items-center">

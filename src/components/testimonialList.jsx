@@ -7,7 +7,10 @@ const TestimonialList = async () => {
   const loadTestiCards = () => {
     return testiList?.map((member, ind) => {
       return (
-        <div key={ind} className="testi-card py-[48px] px-[23px] flex flex-col items-center">
+        <div
+          key={ind}
+          className="testi-card py-[48px] px-[23px] flex flex-col items-center"
+        >
           <div
             style={{ backgroundImage: `url(${member["image"]})` }}
             className="img-1 w-[100px] set-bg-img h-[100px] rounded-[20px] bg-[#000]"
