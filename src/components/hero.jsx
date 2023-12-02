@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
-export default function Hero({ brands, images }) {
+import Image from 'next/image';
+
+export default async function Hero({brands, images}) {
+    
   return (
     <div className="hero bg-[#50d71e] pt-[170px] pb-[35px]">
       <div className="container">
@@ -55,8 +57,9 @@ export default function Hero({ brands, images }) {
                     src={brand.image}
                     width={100}
                     height={100}
-                    layout="responsive"
+                    // layout="responsive"
                     alt="brands"
+                    className='h-auto w-auto'
                   />
                 </li>
               );

@@ -1,5 +1,11 @@
+import BreadCrumb from '@/components/breadCrumb'
+import OurServices from '@/components/ourServices'
 export default function Page(){
     return (
-        <p>hello world</p>
+        <>
+        <BreadCrumb title="Our Services"/>
+        <OurServices/>
+        
+        </>
     )
 }

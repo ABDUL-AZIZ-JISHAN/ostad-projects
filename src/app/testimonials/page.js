@@ -1,5 +1,13 @@
+import BreadCrumb from '@/components/breadCrumb'
+import TestimonialList from '@/components/testimonialList'
+
+
+
 export default function Page(){
     return (
-        <p>hello world</p>
+        <>
+        <BreadCrumb title="Testimonial List"/>
+        <TestimonialList/>
+        </>
     )
 }

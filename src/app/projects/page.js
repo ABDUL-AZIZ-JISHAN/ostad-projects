@@ -1,5 +1,11 @@
+import BreadCrumb from '@/components/breadCrumb'
+import AllProjects from '@/components/allProjects'
+
 export default function Page(){
     return (
-        <p>hello world</p>
+        <>
+        <BreadCrumb title="All Projects"/>
+        <AllProjects/>
+        </>
     )
 }

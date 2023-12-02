@@ -1,7 +1,12 @@
-import "@/styles/global.css";
-import "@/styles/component.css";
+
 import "@/styles/style.css";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import CopyRight from "@/components/copyRight";
+import NewsLetter from "@/components/newsLetter";
+import getSimpleResponse from "@/utils/getSimpleResponse";
+
+
 
 export default function RootLayout({ children }) {
   return (
@@ -9,6 +14,9 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <NewsLetter/>
+        <Footer/>
+        <CopyRight/>
       </body>
     </html>
   );

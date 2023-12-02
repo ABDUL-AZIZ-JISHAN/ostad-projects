@@ -1,5 +1,11 @@
+import BreadCrumb from '@/components/breadCrumb'
+import TeamMember from '@/components/teamMember'
+
 export default function Page(){
     return (
-        <p>hello world</p>
+        <>
+        <BreadCrumb title="Team"/>
+        <TeamMember/>
+        </>
     )
 }
