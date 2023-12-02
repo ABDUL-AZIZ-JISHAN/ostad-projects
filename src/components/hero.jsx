@@ -1,19 +1,23 @@
 import Link from 'next/link'
 import Image from 'next/image';
+import getSimpleResponse from "@/utils/getSimpleResponse";
 
-export default async function Hero({brands, images}) {
-    
+export default async function Hero() {
+  const brands = await getSimpleResponse("/api/BrandList");
+  const contents = await getSimpleResponse("/api/HeroList");
+  const {title , description} = contents || {};
+  
   return (
     <div className="hero bg-[#50d71e] pt-[170px] pb-[35px]">
       <div className="container">
         <div className="top-content flex justify-between items-center">
           <div className="left-content">
             <h1 className="hero-title">
-              Increase Your Customers Loyalty and Satisfaction
+              {title || `Increase Your Customers Loyalty and Satisfaction`}
             </h1>
             <p className="hero-subtitle mt-[10px]">
-              We help businesses like yours earn more customers, standout from
-              competitors, make more money
+              {description || `We help businesses like yours earn more customers, standout from
+              competitors, make more money`}
             </p>
             <Link
               href="#0"
@@ -26,21 +30,21 @@ export default async function Hero({brands, images}) {
           <div className="img-content flex flex-col ">
             <div className="flex">
               <div
-                style={{ backgroundImage: `url(${images["image1"]})` }}
+                style={{ backgroundImage: `url(${contents["image1"]})` }}
                 className="img-1 w-[408px] set-bg-img rounded-[10px] h-[270px] bg-[#000]"
               ></div>
               <div
-                style={{ backgroundImage: `url(${images["image2"]})` }}
+                style={{ backgroundImage: `url(${contents["image2"]})` }}
                 className="img-1 ml-[18px] set-bg-img rounded-[10px] w-[180px] h-[270px] bg-[#000]"
               ></div>
             </div>
             <div className="flex mt-[18px]">
               <div
-                style={{ backgroundImage: `url(${images["image3"]})` }}
+                style={{ backgroundImage: `url(${contents["image3"]})` }}
                 className="img-1 w-[245px] set-bg-img rounded-[10px] h-[165px] bg-[#000]"
               ></div>
               <div
-                style={{ backgroundImage: `url(${images["image4"]})` }}
+                style={{ backgroundImage: `url(${contents["image4"]})` }}
                 className="img-1 ml-[18px] set-bg-img rounded-[10px] w-[345px] h-[165px] bg-[#000]"
               ></div>
             </div>
