@@ -1,18 +1,24 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import { AvatarIcon } from "./Icons";
+import { useState } from "react";
 
 const CommentSection = ({ commentsList = [] }) => {
   const [comments, setComments] = useState(commentsList);
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState({
+    users: { name: "" },
+    descriptions: "",
+  });
   const [activeTab, setActiveTab] = useState("commentList");
 
-  const handleAddComment = () => {
-    if (newComment.trim() !== "") {
-      setNewComment("");
-      setActiveTab("commentList");
-    }
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    const newCom = { id: comments.length + 100, ...newComment };
+    setComments([newCom, ...comments]);
+    setActiveTab("commentList");
+    setNewComment({
+      users: { name: "" },
+      descriptions: "",
+    });
   };
 
   return (
@@ -49,14 +55,21 @@ const CommentSection = ({ commentsList = [] }) => {
             </p>
           ) : (
             <ul className="">
-              {comments.map((comment) => {
+              {comments.map((comment, ind) => {
                 const { id, users, descriptions } = comment;
                 return (
                   <li key={id} className="text-gray-700 mb-4 border-2 p-4">
                     <div className="flex ">
-                      <AvatarIcon className="w-8 h-8 rounded-full mr-2" />
+                      <svg
+                        height="20px"
+                        width="20px"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                      >
+                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                      </svg>
                       <p className="font-bold ml-2">
-                        {users.firstName + " " + users.lastName}
+                        {users.name || users.firstName + " " + users.lastName}
                       </p>
                     </div>
                     <div className="mt-3">
@@ -71,20 +84,39 @@ const CommentSection = ({ commentsList = [] }) => {
       )}
 
       {activeTab === "createComment" && (
-        <div className="mt-10">
+        <form onSubmit={handleAddComment} className="mt-10">
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="w-full border p-2 mb-3 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            value={newComment.users.name}
+            onChange={(e) =>
+              setNewComment({
+                ...newComment,
+                users: {
+                  name: e.target.value.trim(),
+                },
+              })
+            }
+          />
           <textarea
-            placeholder="Add your comment..."
+            placeholder="your comment..."
             className="w-full border p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
+            value={newComment.descriptions}
+            onChange={(e) =>
+              setNewComment({
+                ...newComment,
+                descriptions: e.target.value,
+              })
+            }
           />
           <button
             className="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300"
-            onClick={handleAddComment}
+            type="submit"
           >
             Add Comment
           </button>
-        </div>
+        </form>
       )}
     </div>
   );

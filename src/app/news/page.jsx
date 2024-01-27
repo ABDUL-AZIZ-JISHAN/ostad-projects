@@ -12,7 +12,8 @@ const Page = async ({ searchParams }) => {
     await getData(`${process.env.API_BASE_URL}/api/news/details?id=${newsId}`);
 
   const comments = await getData(
-    `${process.env.API_BASE_URL}/api/news/comments?postId=${newsId}`
+    `${process.env.API_BASE_URL}/api/news/comments?postId=${newsId}`,
+    false
   );
 
   return (

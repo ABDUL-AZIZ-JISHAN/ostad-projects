@@ -2,7 +2,6 @@ import React from "react";
 import NewsCard from "@/components/NewsCard";
 import Image from "next/image";
 import { ClockIcon } from "@/components/Icons";
-import CommentSection from "@/components/Comment";
 import getData from "@/utils/getData";
 
 const Layout = async ({ children }) => {
